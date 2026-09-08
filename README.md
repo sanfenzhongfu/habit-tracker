@@ -4,6 +4,8 @@
 
 在线地址：https://sanfenzhongfu.github.io/habit-tracker/
 
+简体中文 | [English](./README.en.md)
+
 ---
 
 ## 能做什么
@@ -55,8 +57,10 @@
 
 ```
 .
-├── index.html    # 全部代码：HTML + CSS + JavaScript 都在这一个文件里
-└── README.md
+├── index.html      # 全部代码：HTML + CSS + JavaScript 都在这一个文件里
+├── README.md       # 简体中文
+├── README.en.md    # English
+└── LICENSE         # MIT
 ```
 
 没有依赖、没有构建步骤、没有框架。改完保存，刷新页面就能看到效果。
@@ -92,3 +96,7 @@ open index.html
 - 按月查看的打卡热力图
 - 习惯的排序和归档
 - 提醒通知
+
+## 开源许可
+
+MIT — 随便用，改、抄、商用都行，不用打招呼。
