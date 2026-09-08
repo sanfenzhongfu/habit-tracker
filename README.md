@@ -1,6 +1,8 @@
 # 习惯打卡 · Habit Tracker
 
-一个轻量到极致的习惯打卡页面。**单个 HTML 文件**，不需要安装任何东西，双击就能用。
+![页面预览](preview.png)
+
+一个 HTML 文件就是一个习惯打卡工具。不用安装、不用注册、不联网，**数据只存在你自己的浏览器里**。
 
 在线地址：https://sanfenzhongfu.github.io/habit-tracker/
 英文版地址：https://sanfenzhongfu.github.io/habit-tracker/en/

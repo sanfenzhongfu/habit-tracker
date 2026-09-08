@@ -1,6 +1,8 @@
 # Habit Tracker · 习惯打卡
 
-A habit tracker so light it hurts. **One single HTML file** — no install, no build, no dependencies. Just double-click it.
+![Preview](preview.png)
+
+A habit tracker in **one single HTML file**. No install, no build, no sign-up, no server — your data never leaves your browser.
 
 Live demo: https://sanfenzhongfu.github.io/habit-tracker/
 English version: https://sanfenzhongfu.github.io/habit-tracker/en/
