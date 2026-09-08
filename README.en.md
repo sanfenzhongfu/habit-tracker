@@ -57,7 +57,8 @@ Cross-device sync would require a backend and user accounts — this project is 
 .
 ├── index.html      # everything: HTML + CSS + JavaScript in one file
 ├── README.md       # 简体中文
-└── README.en.md    # English
+├── README.en.md    # English
+└── LICENSE         # MIT
 ```
 
 No dependencies, no build step, no framework. Edit, save, refresh.
