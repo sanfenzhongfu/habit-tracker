@@ -3,6 +3,9 @@
 一个轻量到极致的习惯打卡页面。**单个 HTML 文件**，不需要安装任何东西，双击就能用。
 
 在线地址：https://sanfenzhongfu.github.io/habit-tracker/
+英文版地址：https://sanfenzhongfu.github.io/habit-tracker/en/
+
+页面的右上角可以一键切换中英文，两个版本共用同一份打卡数据。
 
 简体中文 | [English](./README.en.md)
 
@@ -57,7 +60,9 @@
 
 ```
 .
-├── index.html      # 全部代码：HTML + CSS + JavaScript 都在这一个文件里
+├── index.html      # 中文版（HTML + CSS + JavaScript 都在一个文件里）
+├── en/
+│   └── index.html  # 英文版
 ├── README.md       # 简体中文
 ├── README.en.md    # English
 └── LICENSE         # MIT

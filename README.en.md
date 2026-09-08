@@ -3,6 +3,9 @@
 A habit tracker so light it hurts. **One single HTML file** — no install, no build, no dependencies. Just double-click it.
 
 Live demo: https://sanfenzhongfu.github.io/habit-tracker/
+English version: https://sanfenzhongfu.github.io/habit-tracker/en/
+
+A language switch sits in the top-right corner of the page. Both versions share the same check-in data.
 
 [简体中文](./README.md) | English
 
@@ -55,7 +58,9 @@ Cross-device sync would require a backend and user accounts — this project is 
 
 ```
 .
-├── index.html      # everything: HTML + CSS + JavaScript in one file
+├── index.html      # Chinese version: HTML + CSS + JavaScript in one file
+├── en/
+│   └── index.html  # English version
 ├── README.md       # 简体中文
 ├── README.en.md    # English
 └── LICENSE         # MIT

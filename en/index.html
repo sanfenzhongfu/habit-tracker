@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-page-node-id="CLfuoHGk9Fbg9YD7JiPzgd">
-<head data-page-node-id="81bY2cGu0FLOFeSbFQVdsU">
-<meta charset="UTF-8" data-page-node-id="6VTCMb5BITzcW0GXgJN5TM">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" data-page-node-id="JBkZ7Oy6sNYjsxnJ3aMLpH">
-<meta name="theme-color" content="#08090b" data-page-node-id="fmUo9o4AYI4dlikK6uxQEC">
-<title>习惯 · Habit</title>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#08090b">
+<title>Habit Tracker</title>
 <style>
   :root{
     --bg:#08090b;
@@ -24,7 +24,7 @@
   html,body{height:100%}
   body{
     margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Noto Sans SC","Helvetica Neue",sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","Segoe UI",Arial,sans-serif;
     color:var(--txt);
     background:var(--bg);
     -webkit-font-smoothing:antialiased;
@@ -35,7 +35,7 @@
     overflow-x:hidden;
   }
 
-  /* 环境光 + 颗粒 */
+  /* ambient light + grain */
   .ambient{position:fixed;inset:0;pointer-events:none;z-index:0;
     background:
       radial-gradient(720px 520px at 18% -12%, rgba(126,142,255,.10), transparent 62%),
@@ -51,7 +51,7 @@
 
   .wrap{position:relative;z-index:1;width:100%;max-width:468px;padding-top:calc(46px + env(safe-area-inset-top))}
 
-  /* ---------- 页头 ---------- */
+  /* ---------- header ---------- */
   .head{margin-bottom:26px}
   .eyebrow{
     display:flex;align-items:center;justify-content:space-between;
@@ -72,7 +72,7 @@
     margin-top:9px;font-size:13.5px;color:var(--dim);letter-spacing:.02em;
   }
 
-  /* ---------- 卡片基座 ---------- */
+  /* ---------- card base ---------- */
   .panel{
     background:var(--panel);
     border:1px solid var(--line);
@@ -82,7 +82,7 @@
     -webkit-backdrop-filter:blur(20px) saturate(120%);
   }
 
-  /* ---------- 进度 ---------- */
+  /* ---------- progress ---------- */
   .hero{
     display:flex;align-items:center;gap:22px;padding:24px 26px;
   }
@@ -107,7 +107,7 @@
   .sub.done{color:var(--ok)}
   .sub.done span{display:inline-block;margin-right:4px}
 
-  /* ---------- 7 天 ---------- */
+  /* ---------- 7 days ---------- */
   .week{margin-top:12px;padding:18px 22px 16px}
   .week-head{
     display:flex;justify-content:space-between;align-items:baseline;
@@ -133,7 +133,7 @@
   .day span{font-size:10.5px;color:var(--dim-2);letter-spacing:.04em}
   .day.today span{color:var(--txt);font-weight:600}
 
-  /* ---------- 列表 ---------- */
+  /* ---------- list ---------- */
   .sec{
     display:flex;align-items:center;gap:14px;margin:32px 2px 14px;
     font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim-2);font-weight:600;
@@ -190,7 +190,7 @@
   .edit svg{width:14px;height:14px}
   @media(hover:none){.edit{opacity:.55}}
 
-  /* ---------- 空 / 按钮 ---------- */
+  /* ---------- empty / buttons ---------- */
   .empty{
     text-align:center;padding:52px 26px;border:1px dashed var(--line);
     border-radius:22px;background:rgba(255,255,255,.014);
@@ -217,7 +217,7 @@
   .add:hover{color:var(--txt);background:rgba(255,255,255,.03);border-color:var(--line-2)}
   .add svg{width:13px;height:13px}
 
-  /* ---------- 弹层 ---------- */
+  /* ---------- sheet ---------- */
   .mask{
     position:fixed;inset:0;background:rgba(4,5,7,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
     display:flex;align-items:flex-end;justify-content:center;z-index:50;
@@ -273,7 +273,7 @@
   }
   .danger:hover{background:rgba(201,139,139,.08);opacity:1}
 
-  /* ---------- 反馈 ---------- */
+  /* ---------- feedback ---------- */
   .confetti{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden}
   .p{position:absolute;top:-16px;width:5px;height:5px;border-radius:50%;animation:fall linear forwards}
   @keyframes fall{to{transform:translateY(104vh) rotate(540deg);opacity:0}}
@@ -290,80 +290,80 @@
   }
 </style>
 </head>
-<body data-page-node-id="ngTaGfAAdK5pzvDNdvH1Za">
-<div class="ambient" data-page-node-id="WIMtjq6MEEGaIjQzDzUVKg"></div>
-<div class="hairline" data-page-node-id="jLP6p8FChVRT5NLCupdEqV"></div>
+<body>
+<div class="ambient"></div>
+<div class="hairline"></div>
 
-<main class="wrap" data-page-node-id="6Q0Cc4NKkM3pocUqgoC7de">
-  <header class="head" data-page-node-id="5mu9sRuSzzGjGJTYtKBvkd">
-    <div class="eyebrow" data-page-node-id="G31XUH3n2CGkVg6bP7CvpR"><span>Daily Ritual</span><a class="lang" href="en/">EN</a></div>
-    <h1 class="greet" id="greet" data-page-node-id="pBdE8UaUvFqA5CcoVt9FjZ">你好 <em data-page-node-id="H1PP1X5oGVEIvuBkO8zpXs">·</em> <span id="gname" data-page-node-id="VvuAhyHYHxL0Kz7lEQ88rh">今天</span></h1>
-    <div class="date" id="date" data-page-node-id="UEpjprdfvEiJKsljIDhGft"></div>
+<main class="wrap">
+  <header class="head">
+    <div class="eyebrow"><span>Daily Ritual</span><a class="lang" href="../">中文</a></div>
+    <h1 class="greet" id="greet">Good morning <em>·</em> <span>Day 1</span></h1>
+    <div class="date" id="date"></div>
   </header>
 
-  <section class="panel hero" data-page-node-id="ALNBHPHplmsYLZy0Gegytz">
-    <div class="ring" data-page-node-id="MiJmEWgB80FHerjAKpitcO">
-      <svg width="92" height="92" viewBox="0 0 92 92" data-page-node-id="oymGkElAP090ZeXzYRYN2p">
-        <defs data-page-node-id="ey6UcZp6q5Pa7DWB1Ft3Dg">
-          <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1" data-page-node-id="IXFGpAfQGzj246QayoPn36">
-            <stop offset="0%" stop-color="#f4efe6" data-page-node-id="A12ZeitClMqGJRiRgSGsBR"/><stop offset="100%" stop-color="#9aa3b2" data-page-node-id="PoRorlky1Ybk2HvABFs1UO"/>
+  <section class="panel hero">
+    <div class="ring">
+      <svg width="92" height="92" viewBox="0 0 92 92">
+        <defs>
+          <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#f4efe6"/><stop offset="100%" stop-color="#9aa3b2"/>
           </linearGradient>
         </defs>
-        <circle class="track" cx="46" cy="46" r="39" fill="none" stroke-width="5" data-page-node-id="7hwArGzDvobKQykv5idyVo"/>
+        <circle class="track" cx="46" cy="46" r="39" fill="none" stroke-width="5"/>
         <circle class="bar" id="bar" cx="46" cy="46" r="39" fill="none" stroke-width="5"
-                stroke-dasharray="245.04" stroke-dashoffset="245.04" data-page-node-id="2MwEWf2eC6TPPYYN8rOF5r"/>
+                stroke-dasharray="245.04" stroke-dashoffset="245.04"/>
       </svg>
-      <div class="txt" data-page-node-id="yq4PBQGDKQq7R9oVb26aL3"><div class="num" id="num" data-page-node-id="BQW2WCQ4uL8DhWWNuA6RJl">0</div><div class="den" id="den" data-page-node-id="wCpv0iwDAixNhfuBT1jQ5a">/ 0</div></div>
+      <div class="txt"><div class="num" id="num">0</div><div class="den" id="den">/ 0</div></div>
     </div>
-    <div class="hero-meta" data-page-node-id="Bo09qjiU5KL1U8wJhD1ay6">
-      <div class="pct" data-page-node-id="W4clVHdACHnE4HCOEyv8wm"><b id="pctTxt" data-page-node-id="Cr5WjQBlekv97ie7sJi4LD">0%</b> 已完成</div>
-      <div class="sub" id="sub" data-page-node-id="ms4Z6gWuYONroXUpelTOpV"></div>
+    <div class="hero-meta">
+      <div class="pct"><b id="pctTxt">0%</b> complete</div>
+      <div class="sub" id="sub"></div>
     </div>
   </section>
 
-  <section class="panel week" data-page-node-id="FXFsRrYXu107qoJcAm7Kvy">
-    <div class="week-head" data-page-node-id="0qkpAMtTXZFpkNLmExHFiO"><span data-page-node-id="w5u3A0A7aeqXMWCrprlUYv">最近 7 天</span><b id="weekRate" data-page-node-id="NvuXycHkDpn30id22qHt7D"></b></div>
-    <div class="bars" id="weekBars" data-page-node-id="5Bzn1StbaHiD4sutDHoBaf"></div>
+  <section class="panel week">
+    <div class="week-head"><span>Last 7 days</span><b id="weekRate"></b></div>
+    <div class="bars" id="weekBars"></div>
   </section>
 
-  <div class="sec" data-page-node-id="hHH8a4rlDyaAHwZTAbVtoA">今日打卡 <b id="count" data-page-node-id="VjnKkpwcxU1sWqsbQhJlnU">0 / 0</b></div>
-  <div class="list" id="list" data-page-node-id="WTNDUdrMcinV1dAkPX5T6u"></div>
-  <button class="add" id="addBtn" data-page-node-id="wYBXU9ZCxAo3gEO5FZ75UX">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" data-page-node-id="1sNczow8UnkwtA6ZERUpT0"><path d="M12 5v14M5 12h14" data-page-node-id="OqljbbbSLEq5ir4emzcO08"/></svg>
-    新建习惯
+  <div class="sec">Today <b id="count">0 / 0</b></div>
+  <div class="list" id="list"></div>
+  <button class="add" id="addBtn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+    New habit
   </button>
 
-  <div class="foot" data-page-node-id="owGJCG5CJ6MYYgHPtjWZJS">坚持比完美更重要</div>
+  <div class="foot">Consistency beats perfection</div>
 </main>
 
-<div class="mask" id="mask" data-page-node-id="Bocg3u88NYnvfT56sqLXsH">
-  <div class="sheet" data-page-node-id="qYhZMC9HxACPYp9PxRBaSA">
-    <div class="handle" data-page-node-id="nB5xR6PRwh4UTd2rzSuV0D"></div>
-    <h3 id="sheetTitle" data-page-node-id="7jtxHf0airQSvHxssiHpVf">添加习惯</h3>
-    <div class="field" data-page-node-id="odnoe5dyZzgyPzWt7k9N4y">
-      <label data-page-node-id="ZG5vZUiGdZnVAXAj4Bi5G2">习惯名称</label>
-      <input type="text" id="nameInput" maxlength="20" placeholder="例如：喝水 2L" data-page-node-id="OkjZK0zQSgXDRNAYrC7G5B">
+<div class="mask" id="mask">
+  <div class="sheet">
+    <div class="handle"></div>
+    <h3 id="sheetTitle">Add habit</h3>
+    <div class="field">
+      <label>Habit name</label>
+      <input type="text" id="nameInput" maxlength="20" placeholder="e.g. Drink 2L water">
     </div>
-    <div class="field" data-page-node-id="jmHYVYSAlPeToaPQDWI9V9">
-      <label data-page-node-id="9vpY7zlFOGF6lH2UCbDsps">图标</label>
-      <div class="emoji-grid" id="emojiGrid" data-page-node-id="pWsx8teryjzNVFZwn2faMC"></div>
+    <div class="field">
+      <label>Icon</label>
+      <div class="emoji-grid" id="emojiGrid"></div>
     </div>
-    <div class="field" data-page-node-id="qpBOJ8ooaty6gThopyX7mo">
-      <label data-page-node-id="Wpq5uS0FlHZPFzz5GrCLIH">颜色</label>
-      <div class="colors" id="colorRow" data-page-node-id="AOw8IZVwOxYoXUTq3LEddf"></div>
+    <div class="field">
+      <label>Color</label>
+      <div class="colors" id="colorRow"></div>
     </div>
-    <div class="row" data-page-node-id="xXRZq4FVxlRov1W932AW1r">
-      <button class="btn ghost" id="cancelBtn" data-page-node-id="Wod1gZtEkT5pPKPY9Djcvt">取消</button>
-      <button class="btn" id="saveBtn" data-page-node-id="CMXNkp58hoQnDHD1P3YHAB">保存</button>
+    <div class="row">
+      <button class="btn ghost" id="cancelBtn">Cancel</button>
+      <button class="btn" id="saveBtn">Save</button>
     </div>
-    <div class="row" id="delRow" style="display:none" data-page-node-id="234k6xAPLqG8l7hkEC3HAk">
-      <button class="btn danger" id="delBtn" data-page-node-id="odZdHQ2hHLDO6Bubjx6zkT">删除这个习惯</button>
+    <div class="row" id="delRow" style="display:none">
+      <button class="btn danger" id="delBtn">Delete this habit</button>
     </div>
   </div>
 </div>
 
-<div class="confetti" id="confetti" data-page-node-id="NIaD1hgB2qFIc1uGnC0hxM"></div>
-<div class="toast" id="toast" data-page-node-id="fmc1dalHm5lBHDZvrnzDhF"></div>
+<div class="confetti" id="confetti"></div>
+<div class="toast" id="toast"></div>
 
 <script>
 (function(){
@@ -372,7 +372,7 @@
   var EMOJIS = ["🏃","💧","📚","🧘","🌅","💪","🥗","😴","✍️","🎧","🚭","💊","🎸","🧹","🚿","☀️"];
   var COLORS = ["#8b9dff","#7fd1ae","#f0a8a8","#e8c07d","#6fc7e8","#c79be8","#f2a3c7","#9ad8c0"];
 
-  /* ---------- 存储 ---------- */
+  /* ---------- storage ---------- */
   var mem = null, warn = false;
   function load(){
     if(mem) return mem;
@@ -387,10 +387,10 @@
   function save(){
     if(warn) return;
     try{ localStorage.setItem(KEY, JSON.stringify(mem)); }
-    catch(e){ warn = true; toast("保存失败：浏览器不允许本地存储"); }
+    catch(e){ warn = true; toast("Save failed: the browser blocks local storage"); }
   }
 
-  /* ---------- 日期 ---------- */
+  /* ---------- dates ---------- */
   function key(d){
     var m = d.getMonth()+1, day = d.getDate();
     return d.getFullYear()+"-"+(m<10?"0":"")+m+"-"+(day<10?"0":"")+day;
@@ -400,8 +400,9 @@
     var p = k.split("-"), d = new Date(+p[0], +p[1]-1, +p[2]);
     d.setDate(d.getDate()+n); return key(d);
   }
-  var WD = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
-  var WDS = ["日","一","二","三","四","五","六"];
+  var MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var WD  = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  var WDS = ["S","M","T","W","T","F","S"];
 
   function doneOn(k,id){ var a = mem.records[k]; return !!(a && a.indexOf(id) > -1); }
   function toggle(id){
@@ -423,12 +424,13 @@
   var $ = function(id){ return document.getElementById(id); };
   var CIR = 2 * Math.PI * 39;
 
-  /* ---------- 头部 ---------- */
+  /* ---------- header ---------- */
   function paintHead(){
     var d = new Date(), h = d.getHours();
-    var g = h<5?"夜深了":h<11?"早上好":h<13?"中午好":h<18?"下午好":h<23?"晚上好":"夜深了";
+    var g = h<5 ? "Late night" : h<11 ? "Good morning" : h<13 ? "Good noon" :
+            h<18 ? "Good afternoon" : h<23 ? "Good evening" : "Late night";
 
-    // 坚持天数：从最早一条打卡记录算起
+    // day count: from the earliest check-in record
     var ks = Object.keys(mem.records).sort();
     var n = 1;
     if(ks.length){
@@ -436,18 +438,18 @@
       var first = new Date(+p[0], +p[1]-1, +p[2]);
       n = Math.max(1, Math.round((new Date(d.getFullYear(),d.getMonth(),d.getDate()) - first) / 86400000) + 1);
     }
-    $("greet").innerHTML = g + ' <em>·</em> <span>坚持第 ' + n + ' 天</span>';
-    $("date").textContent = (d.getMonth()+1)+"月"+d.getDate()+"日 · "+WD[d.getDay()];
+    $("greet").innerHTML = g + ' <em>·</em> <span>Day ' + n + '</span>';
+    $("date").textContent = MON[d.getMonth()] + " " + d.getDate() + " · " + WD[d.getDay()];
   }
 
-  /* ---------- 7 天条 ---------- */
+  /* ---------- 7-day bars ---------- */
   function paintWeek(){
     var box = $("weekBars");
     box.innerHTML = "";
     var total = mem.habits.length, hit = 0, sum = 0, days = 0;
     for(var i=6;i>=0;i--){
       var k = shift(today(), -i);
-      var dd = new Date(k.split("-")[0], k.split("-")[1]-1, k.split("-")[2]);
+      var dd = new Date(+k.split("-")[0], +k.split("-")[1]-1, +k.split("-")[2]);
       var done = total ? mem.habits.filter(function(h){ return doneOn(k,h.id); }).length : 0;
       var ratio = total ? done/total : 0;
       if(total){ sum += ratio; days++; if(ratio === 1) hit++; }
@@ -456,13 +458,13 @@
       col.className = "day" + (i===0?" today":"") + (total && ratio===1 ? " full":"") + (ratio===0?" empty":"");
       col.innerHTML =
         '<div class="bar"><i style="height:'+Math.round(ratio*100)+'%"></i></div>' +
-        '<span>' + (i===0 ? "今" : WDS[dd.getDay()]) + '</span>';
+        '<span>' + (i===0 ? "Now" : WDS[dd.getDay()]) + '</span>';
       box.appendChild(col);
     }
-    $("weekRate").textContent = days ? ("完成率 " + Math.round(sum/days*100) + "% · 全勤 " + hit + " 天") : "—";
+    $("weekRate").textContent = days ? (Math.round(sum/days*100) + "% · " + hit + " perfect " + (hit===1?"day":"days")) : "—";
   }
 
-  /* ---------- 渲染 ---------- */
+  /* ---------- render ---------- */
   function render(){
     paintHead();
 
@@ -479,21 +481,21 @@
     paintWeek();
 
     var sub = $("sub");
-    if(total === 0){ sub.className = "sub"; sub.textContent = "还没有习惯，先立一个小目标。"; }
-    else if(done === total){ sub.className = "sub done"; sub.innerHTML = "<span>✦</span>今天全部完成"; }
-    else{ sub.className = "sub"; sub.textContent = "还差 " + (total-done) + " 项，继续"; }
+    if(total === 0){ sub.className = "sub"; sub.textContent = "No habits yet. Start with one small goal."; }
+    else if(done === total){ sub.className = "sub done"; sub.innerHTML = "<span>✦</span>All done today"; }
+    else{ sub.className = "sub"; sub.textContent = (total-done) + " to go — keep at it"; }
 
     var list = $("list");
     list.innerHTML = "";
     if(total === 0){
       var e = document.createElement("div");
       e.className = "empty";
-      e.innerHTML = '<div class="big">🌱</div><p>空空如也</p>' +
-        '<small>习惯是攒出来的，不是立出来的。<br>先加一两个，别一上来就十个。</small>' +
-        '<div><button class="btn" id="demoBtn">用示例习惯</button></div>';
+      e.innerHTML = '<div class="big">🌱</div><p>Nothing here yet</p>' +
+        '<small>Habits are built, not declared.<br>Start with one or two — not ten.</small>' +
+        '<div><button class="btn" id="demoBtn">Use sample habits</button></div>';
       list.appendChild(e);
       $("demoBtn").onclick = function(){
-        [["运动 30 分钟","🏃",COLORS[0]],["喝水 2L","💧",COLORS[3]],["阅读 20 页","📚",COLORS[1]]]
+        [["Work out 30 min","🏃",COLORS[0]],["Drink 2L water","💧",COLORS[3]],["Read 20 pages","📚",COLORS[1]]]
           .forEach(function(x){ mem.habits.push({ id:newId(), name:x[0], icon:x[1], color:x[2], createdAt:Date.now() }); });
         save(); render();
       };
@@ -505,12 +507,13 @@
       var el = document.createElement("div");
       el.className = "card" + (on ? " on" : "");
       el.style.setProperty("--c", h.color);
+      var st = s === 0 ? "Not started yet" : s === 1 ? "1-day streak" : s + "-day streak";
       el.innerHTML =
         '<div class="icon">'+h.icon+'</div>' +
         '<div class="meta"><div class="name"></div>' +
-          '<div class="streak'+(s>=7?" hot":"")+'">连续 <b>'+s+'</b> 天'+(s>=7?' · 状态不错':'')+'</div></div>' +
+          '<div class="streak'+(s>=7?" hot":"")+'">'+(s===0?st:'<b>'+s+'</b>-day streak')+(s>=7?' · looking good':'')+'</div></div>' +
         '<div class="box"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></div>' +
-        '<button class="edit" title="编辑"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4l10-10a2.8 2.8 0 10-4-4L4 16v4z"/></svg></button>';
+        '<button class="edit" title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4l10-10a2.8 2.8 0 10-4-4L4 16v4z"/></svg></button>';
       el.querySelector(".name").textContent = h.name;
 
       el.onclick = function(){
@@ -523,7 +526,7 @@
     });
   }
 
-  /* ---------- 反馈 ---------- */
+  /* ---------- feedback ---------- */
   function celebrate(){
     var box = $("confetti");
     for(var i=0;i<34;i++){
@@ -547,7 +550,7 @@
     tTimer = setTimeout(function(){ t.classList.remove("show"); }, 2000);
   }
 
-  /* ---------- 弹层 ---------- */
+  /* ---------- sheet ---------- */
   var editing = null, pickIcon = EMOJIS[0], pickColor = COLORS[0];
   function buildPickers(){
     var g = $("emojiGrid"); g.innerHTML = "";
@@ -572,7 +575,7 @@
   }
   function openSheet(h){
     editing = h || null;
-    $("sheetTitle").textContent = h ? "编辑习惯" : "添加习惯";
+    $("sheetTitle").textContent = h ? "Edit habit" : "Add habit";
     $("nameInput").value = h ? h.name : "";
     pickIcon = h ? h.icon : EMOJIS[Math.floor(Math.random()*EMOJIS.length)];
     pickColor = h ? h.color : COLORS[mem.habits.length % COLORS.length];
@@ -591,7 +594,7 @@
 
   $("saveBtn").onclick = function(){
     var name = $("nameInput").value.trim();
-    if(!name){ toast("给它起个名字"); $("nameInput").focus(); return; }
+    if(!name){ toast("Give it a name"); $("nameInput").focus(); return; }
     if(editing){ editing.name = name; editing.icon = pickIcon; editing.color = pickColor; }
     else{ mem.habits.push({ id:newId(), name:name, icon:pickIcon, color:pickColor, createdAt:Date.now() }); }
     save(); closeSheet(); render();
@@ -600,21 +603,21 @@
 
   $("delBtn").onclick = function(){
     if(!editing) return;
-    if(!confirm("删除「" + editing.name + "」？历史打卡记录也会一并清掉。")) return;
+    if(!confirm("Delete “" + editing.name + "”? Its check-in history will be removed too.")) return;
     var id = editing.id;
     mem.habits = mem.habits.filter(function(h){ return h.id !== id; });
     Object.keys(mem.records).forEach(function(k){
       mem.records[k] = mem.records[k].filter(function(x){ return x !== id; });
       if(mem.records[k].length === 0) delete mem.records[k];
     });
-    save(); closeSheet(); render(); toast("已删除");
+    save(); closeSheet(); render(); toast("Deleted");
   };
 
-  /* ---------- 启动 ---------- */
+  /* ---------- boot ---------- */
   load(); render(); buildPickers();
   var cur = today();
   setInterval(function(){ var t = today(); if(t !== cur){ cur = t; render(); } }, 20000);
-  if(warn) toast("浏览器禁用了本地存储，数据不会被保存");
+  if(warn) toast("Local storage is disabled — nothing will be saved");
 })();
 </script>
 </body>
