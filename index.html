@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#08090b">
+<html lang="zh-CN" data-page-node-id="HdB7cxRqELiM0gFePhgk4G">
+<head data-page-node-id="wpVRRHYpylNmBJK7LyqMMB">
+<meta charset="UTF-8" data-page-node-id="5ssesieE0awnMcKFHmW5pK">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" data-page-node-id="P2hDdnvg3gVraBtnV1dD7s">
+<meta name="theme-color" content="#08090b" data-page-node-id="zpzKq7vzrxhG5WdV5BeUPA">
 <title>习惯 · Habit</title>
 <style>
   :root{
@@ -115,8 +115,15 @@
     font-weight:600;margin-bottom:16px;
   }
   .week-head b{font-size:13px;letter-spacing:0;color:var(--txt);font-weight:600;text-transform:none}
-  .bars{display:grid;grid-template-columns:repeat(7,1fr);gap:9px;align-items:end}
-  .day{display:flex;flex-direction:column;align-items:center;gap:9px}
+  .bars{
+    display:grid;grid-template-columns:repeat(7,minmax(0,1fr));
+    grid-template-rows:auto auto;column-gap:9px;row-gap:11px;
+    overflow:hidden;
+  }
+  .day{
+    grid-row:1;display:flex;flex-direction:column;align-items:center;
+    justify-content:flex-end;min-width:0;
+  }
   .bar{
     width:100%;height:52px;border-radius:7px;position:relative;overflow:hidden;
     background:rgba(255,255,255,.035);
@@ -130,8 +137,19 @@
   .day.full .bar i{background:linear-gradient(180deg,#a8d8be,#6fae94)}
   .day.today.full .bar i{background:linear-gradient(180deg,#f0e6d6,#c9b391)}
   .bar.empty i{height:0!important}
-  .day span{font-size:10.5px;color:var(--dim-2);letter-spacing:.04em}
-  .day.today span{color:var(--txt);font-weight:600}
+  .day .bar::after{
+    content:"";position:absolute;left:0;right:0;top:0;
+    height:var(--rest,100%);
+    border:1px dashed rgba(255,255,255,.16);
+    border-radius:7px;pointer-events:none;
+    transition:height .7s var(--spring),opacity .35s;
+  }
+  .day .bar.nodash::after{display:none}
+  .lbl{
+    grid-row:2;font-size:10.5px;color:var(--dim-2);letter-spacing:.04em;
+    text-align:center;font-variant-numeric:tabular-nums;
+  }
+  .lbl.today{color:var(--txt);font-weight:600}
 
   /* ---------- 列表 ---------- */
   .sec{
@@ -290,80 +308,80 @@
   }
 </style>
 </head>
-<body>
-<div class="ambient"></div>
-<div class="hairline"></div>
+<body data-page-node-id="liEYL5MgEqBAQC4AFREQFm">
+<div class="ambient" data-page-node-id="MBmJUwJgRUPqxoSU3NZXWk"></div>
+<div class="hairline" data-page-node-id="oufylYClkenpcEpyB8BUM5"></div>
 
-<main class="wrap">
-  <header class="head">
-    <div class="eyebrow"><span>Daily Ritual</span><a class="lang" href="en/">EN</a></div>
-    <h1 class="greet" id="greet">你好 <em>·</em> <span id="gname">今天</span></h1>
-    <div class="date" id="date"></div>
+<main class="wrap" data-page-node-id="0oDzUwagM3kfuNQyHoKEzJ">
+  <header class="head" data-page-node-id="0I2gZLemiK5Z6GhctHy7uU">
+    <div class="eyebrow" data-page-node-id="pNzQVACXqyjfhciPCOgwfl"><span data-page-node-id="BA55b1t3HwcM7CAcSE0CAw">Daily Ritual</span><a class="lang" href="en/" data-page-node-id="Hx9jYiFoeJDMwt5hdTOGYJ">EN</a></div>
+    <h1 class="greet" id="greet" data-page-node-id="LyHMr8pKaFQgzXDMLPRifd">你好 <em data-page-node-id="cTC2NVMdM3EFmAd3NJzrCl">·</em> <span id="gname" data-page-node-id="IukAaFcnCTLuH78YTHm8PN">今天</span></h1>
+    <div class="date" id="date" data-page-node-id="rx450qUjFJgo9y04GWWfSa"></div>
   </header>
 
-  <section class="panel hero">
-    <div class="ring">
-      <svg width="92" height="92" viewBox="0 0 92 92">
-        <defs>
-          <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#f4efe6"/><stop offset="100%" stop-color="#9aa3b2"/>
+  <section class="panel hero" data-page-node-id="7yz6gfvVkeO4HcuNQsHHxC">
+    <div class="ring" data-page-node-id="ww95Q3DPi8C2zxPukOgxte">
+      <svg width="92" height="92" viewBox="0 0 92 92" data-page-node-id="qQ8WruJMrTC2Hs3srmJUc2">
+        <defs data-page-node-id="SlhcMOz6QFok6bNQRBylyg">
+          <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1" data-page-node-id="h65IwUU6GV212JaldmdJFu">
+            <stop offset="0%" stop-color="#f4efe6" data-page-node-id="al86X1W64fxBtcC7neAwE7"/><stop offset="100%" stop-color="#9aa3b2" data-page-node-id="anQDYKUBuIai8qFGnPIfFX"/>
           </linearGradient>
         </defs>
-        <circle class="track" cx="46" cy="46" r="39" fill="none" stroke-width="5"/>
+        <circle class="track" cx="46" cy="46" r="39" fill="none" stroke-width="5" data-page-node-id="K0Rsla5ORVMVzXhbumnlA7"/>
         <circle class="bar" id="bar" cx="46" cy="46" r="39" fill="none" stroke-width="5"
-                stroke-dasharray="245.04" stroke-dashoffset="245.04"/>
+                stroke-dasharray="245.04" stroke-dashoffset="245.04" data-page-node-id="5ys65YI4JPsH5NdfiYS1pp"/>
       </svg>
-      <div class="txt"><div class="num" id="num">0</div><div class="den" id="den">/ 0</div></div>
+      <div class="txt" data-page-node-id="hky8vrSx1bYGy4z3WNyZyR"><div class="num" id="num" data-page-node-id="MT7Nrra4xH4fz5UN7rnDtn">0</div><div class="den" id="den" data-page-node-id="NReKeGEOWFe25iNQVPuJyJ">/ 0</div></div>
     </div>
-    <div class="hero-meta">
-      <div class="pct"><b id="pctTxt">0%</b> 已完成</div>
-      <div class="sub" id="sub"></div>
+    <div class="hero-meta" data-page-node-id="dTHCn3hyEhVR8dyY6pRMKy">
+      <div class="pct" data-page-node-id="b7SRCwHUpiu49EVyosZQcL"><b id="pctTxt" data-page-node-id="W2j9pmPJddTgNMIOBuwZdO">0%</b> 已完成</div>
+      <div class="sub" id="sub" data-page-node-id="cxcU3AmZ1yBSEaumxIeGMe"></div>
     </div>
   </section>
 
-  <section class="panel week">
-    <div class="week-head"><span>最近 7 天</span><b id="weekRate"></b></div>
-    <div class="bars" id="weekBars"></div>
+  <section class="panel week" data-page-node-id="yAAJmehI7q4G9YxpYmHTiy">
+    <div class="week-head" data-page-node-id="KAf7mLEPtguHe8OLpNWEMY"><span data-page-node-id="SNasxbjndHmNYGhQuPXAi3">最近 7 天</span><b id="weekRate" data-page-node-id="UGq2yl0wnQb9ybYH4tkwAZ"></b></div>
+    <div class="bars" id="weekBars" data-page-node-id="7quGrujRUT4gkFl6FNnGvl"></div>
   </section>
 
-  <div class="sec">今日打卡 <b id="count">0 / 0</b></div>
-  <div class="list" id="list"></div>
-  <button class="add" id="addBtn">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+  <div class="sec" data-page-node-id="mQVrOsxzOyhVkfmAzJDLqS">今日打卡 <b id="count" data-page-node-id="CAXx3r9Scej1ND7WDFB5t1">0 / 0</b></div>
+  <div class="list" id="list" data-page-node-id="IznygZPIkOhudSt0UcGk6l"></div>
+  <button class="add" id="addBtn" data-page-node-id="FHHraMNjo6avOPJauAqcOZ">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" data-page-node-id="iqATWolD3mgekdZI9nu4wS"><path d="M12 5v14M5 12h14" data-page-node-id="XklbesBf9IDXmk7LAdD5At"/></svg>
     新建习惯
   </button>
 
-  <div class="foot">坚持比完美更重要</div>
+  <div class="foot" data-page-node-id="A7tTROVWoGAfFjlaUJKJi2">坚持比完美更重要</div>
 </main>
 
-<div class="mask" id="mask">
-  <div class="sheet">
-    <div class="handle"></div>
-    <h3 id="sheetTitle">添加习惯</h3>
-    <div class="field">
-      <label>习惯名称</label>
-      <input type="text" id="nameInput" maxlength="20" placeholder="例如：喝水 2L">
+<div class="mask" id="mask" data-page-node-id="RRMysjy78wiHu8XO4jGSAm">
+  <div class="sheet" data-page-node-id="BOWSEHKTiszBA5VaWk2uiE">
+    <div class="handle" data-page-node-id="XLE37aAlLPUTLqAFNApBZg"></div>
+    <h3 id="sheetTitle" data-page-node-id="28Eun4hZaqAxEEqcSF5cXX">添加习惯</h3>
+    <div class="field" data-page-node-id="fDloQJwFAsv4244CXiCfVZ">
+      <label data-page-node-id="OgCFL0gw4sgbBdEA0Mk1TM">习惯名称</label>
+      <input type="text" id="nameInput" maxlength="20" placeholder="例如：喝水 2L" data-page-node-id="uO4LvKxTFNTeq7DrZaKZn6">
     </div>
-    <div class="field">
-      <label>图标</label>
-      <div class="emoji-grid" id="emojiGrid"></div>
+    <div class="field" data-page-node-id="eXxYBD9jwOtkrjFtUu0pxb">
+      <label data-page-node-id="BxpA3cPkkFc4CJ9mAHhtat">图标</label>
+      <div class="emoji-grid" id="emojiGrid" data-page-node-id="IupnKiLOWvAJfwvnNK8Thf"></div>
     </div>
-    <div class="field">
-      <label>颜色</label>
-      <div class="colors" id="colorRow"></div>
+    <div class="field" data-page-node-id="9lO4oaIcZ2iLL7DEtzGDmN">
+      <label data-page-node-id="3QlalhX4JiTmrQeejuiVSg">颜色</label>
+      <div class="colors" id="colorRow" data-page-node-id="9vHV120lGa1XhlTtiO3eGa"></div>
     </div>
-    <div class="row">
-      <button class="btn ghost" id="cancelBtn">取消</button>
-      <button class="btn" id="saveBtn">保存</button>
+    <div class="row" data-page-node-id="jhkGq9UsyRwbWEGyGdfEy0">
+      <button class="btn ghost" id="cancelBtn" data-page-node-id="VPQ4qV04lSvXphZvvGPR0A">取消</button>
+      <button class="btn" id="saveBtn" data-page-node-id="UGR2kqjDt5FIXVAB9Wv2FU">保存</button>
     </div>
-    <div class="row" id="delRow" style="display:none">
-      <button class="btn danger" id="delBtn">删除这个习惯</button>
+    <div class="row" id="delRow" style="display:none" data-page-node-id="piKpXL12sssxBkq5SQ6alZ">
+      <button class="btn danger" id="delBtn" data-page-node-id="c1nuinvrvHeERon1gMJf8f">删除这个习惯</button>
     </div>
   </div>
 </div>
 
-<div class="confetti" id="confetti"></div>
-<div class="toast" id="toast"></div>
+<div class="confetti" id="confetti" data-page-node-id="4W0C8icAtwjAOUzDch9keF"></div>
+<div class="toast" id="toast" data-page-node-id="j8AkfDiNYvjFk78PVK2uwb"></div>
 
 <script>
 (function(){
@@ -447,17 +465,23 @@
     var total = mem.habits.length, hit = 0, sum = 0, days = 0;
     for(var i=6;i>=0;i--){
       var k = shift(today(), -i);
-      var dd = new Date(k.split("-")[0], k.split("-")[1]-1, k.split("-")[2]);
+      var p = k.split("-");
+      var dd = new Date(+p[0], +p[1]-1, +p[2]);
       var done = total ? mem.habits.filter(function(h){ return doneOn(k,h.id); }).length : 0;
       var ratio = total ? done/total : 0;
       if(total){ sum += ratio; days++; if(ratio === 1) hit++; }
 
       var col = document.createElement("div");
-      col.className = "day" + (i===0?" today":"") + (total && ratio===1 ? " full":"") + (ratio===0?" empty":"");
-      col.innerHTML =
-        '<div class="bar"><i style="height:'+Math.round(ratio*100)+'%"></i></div>' +
-        '<span>' + (i===0 ? "今" : WDS[dd.getDay()]) + '</span>';
+      col.className = "day" + (i===0?" today":"") + (total && ratio===1 ? " full":"") + (ratio===0?" zero":"");
+      var pct = Math.round(ratio*100);
+      var rest = pct >= 92 ? 0 : 100 - pct;
+      col.innerHTML = '<div class="bar'+(rest?'':' nodash')+'" style="--rest:'+rest+'%"><i style="height:'+pct+'%"></i></div>';
       box.appendChild(col);
+
+      var lbl = document.createElement("div");
+      lbl.className = "lbl" + (i===0?" today":"");
+      lbl.textContent = (i===0 ? "今" : WDS[dd.getDay()]);
+      box.appendChild(lbl);
     }
     $("weekRate").textContent = days ? ("完成率 " + Math.round(sum/days*100) + "% · 全勤 " + hit + " 天") : "—";
   }

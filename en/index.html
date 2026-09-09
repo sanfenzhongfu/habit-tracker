@@ -115,8 +115,15 @@
     font-weight:600;margin-bottom:16px;
   }
   .week-head b{font-size:13px;letter-spacing:0;color:var(--txt);font-weight:600;text-transform:none}
-  .bars{display:grid;grid-template-columns:repeat(7,1fr);gap:9px;align-items:end}
-  .day{display:flex;flex-direction:column;align-items:center;gap:9px}
+  .bars{
+    display:grid;grid-template-columns:repeat(7,minmax(0,1fr));
+    grid-template-rows:auto auto;column-gap:9px;row-gap:11px;
+    overflow:hidden;
+  }
+  .day{
+    grid-row:1;display:flex;flex-direction:column;align-items:center;
+    justify-content:flex-end;min-width:0;
+  }
   .bar{
     width:100%;height:52px;border-radius:7px;position:relative;overflow:hidden;
     background:rgba(255,255,255,.035);
@@ -129,9 +136,20 @@
   .day.today .bar i{background:linear-gradient(180deg,#e7ded0,rgba(231,222,208,.45))}
   .day.full .bar i{background:linear-gradient(180deg,#a8d8be,#6fae94)}
   .day.today.full .bar i{background:linear-gradient(180deg,#f0e6d6,#c9b391)}
-  .bar.empty i{height:0!important}
-  .day span{font-size:10.5px;color:var(--dim-2);letter-spacing:.04em}
-  .day.today span{color:var(--txt);font-weight:600}
+  .bar.zero i{height:0!important}
+  .day .bar::after{
+    content:"";position:absolute;left:0;right:0;top:0;
+    height:var(--rest,100%);
+    border:1px dashed rgba(255,255,255,.16);
+    border-radius:7px;pointer-events:none;
+    transition:height .7s var(--spring),opacity .35s;
+  }
+  .day .bar.nodash::after{display:none}
+  .lbl{
+    grid-row:2;font-size:10.5px;color:var(--dim-2);letter-spacing:.04em;
+    text-align:center;font-variant-numeric:tabular-nums;
+  }
+  .lbl.today{color:var(--txt);font-weight:600}
 
   /* ---------- list ---------- */
   .sec{
@@ -449,17 +467,23 @@
     var total = mem.habits.length, hit = 0, sum = 0, days = 0;
     for(var i=6;i>=0;i--){
       var k = shift(today(), -i);
-      var dd = new Date(+k.split("-")[0], +k.split("-")[1]-1, +k.split("-")[2]);
+      var p = k.split("-");
+      var dd = new Date(+p[0], +p[1]-1, +p[2]);
       var done = total ? mem.habits.filter(function(h){ return doneOn(k,h.id); }).length : 0;
       var ratio = total ? done/total : 0;
       if(total){ sum += ratio; days++; if(ratio === 1) hit++; }
 
       var col = document.createElement("div");
-      col.className = "day" + (i===0?" today":"") + (total && ratio===1 ? " full":"") + (ratio===0?" empty":"");
-      col.innerHTML =
-        '<div class="bar"><i style="height:'+Math.round(ratio*100)+'%"></i></div>' +
-        '<span>' + (i===0 ? "Now" : WDS[dd.getDay()]) + '</span>';
+      col.className = "day" + (i===0?" today":"") + (total && ratio===1 ? " full":"") + (ratio===0?" zero":"");
+      var pct = Math.round(ratio*100);
+      var rest = pct >= 92 ? 0 : 100 - pct;
+      col.innerHTML = '<div class="bar'+(rest?'':' nodash')+'" style="--rest:'+rest+'%"><i style="height:'+pct+'%"></i></div>';
       box.appendChild(col);
+
+      var lbl = document.createElement("div");
+      lbl.className = "lbl" + (i===0?" today":"");
+      lbl.textContent = (i===0 ? "Today" : WDS[dd.getDay()]);
+      box.appendChild(lbl);
     }
     $("weekRate").textContent = days ? (Math.round(sum/days*100) + "% · " + hit + " perfect " + (hit===1?"day":"days")) : "—";
   }
