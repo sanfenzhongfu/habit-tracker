@@ -52,7 +52,7 @@
   .wrap{position:relative;z-index:1;width:100%;max-width:468px;padding-top:calc(46px + env(safe-area-inset-top))}
 
   /* ---------- header ---------- */
-  .head{margin-bottom:26px}
+  .head{position:relative;padding-right:50px;margin-bottom:26px}
   .eyebrow{
     display:flex;align-items:center;justify-content:space-between;
     font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
@@ -303,9 +303,59 @@
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   }
   .toast.show{opacity:1;transform:translate(-50%,0)}
-  .foot{
-    margin-top:28px;text-align:center;font-size:11px;color:var(--dim-2);letter-spacing:.06em;
+  /* ---------- settings entry (cog) ---------- */
+  .cog{
+    position:fixed;top:calc(12px + env(safe-area-inset-top));right:14px;z-index:40;width:40px;height:40px;border-radius:12px;
+    border:1px solid var(--line);background:var(--panel);color:var(--dim);
+    display:grid;place-items:center;cursor:pointer;transition:all .2s var(--spring);
+    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   }
+  .cog:hover{color:var(--txt);background:var(--panel-2);border-color:var(--line-2)}
+  .cog:active{transform:scale(.94)}
+  .cog svg{width:19px;height:19px}
+
+  /* ---------- settings: section order ---------- */
+  .set-tip{font-size:12.5px;color:var(--dim);margin:-8px 0 20px;line-height:1.6}
+  .order{display:flex;flex-direction:column;gap:10px;margin-bottom:6px}
+  .oblock{
+    display:flex;align-items:center;gap:14px;
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:13px 16px;transition:background .2s;
+  }
+  .oblock .oname{flex:1;font-size:15px;font-weight:500;letter-spacing:-.01em}
+
+  /* section thumbnails */
+  .thumb{
+    width:52px;height:42px;border-radius:10px;flex:0 0 auto;
+    border:1px solid var(--line);background:rgba(255,255,255,.03);
+    overflow:hidden;position:relative;box-sizing:border-box;
+  }
+  .thumb .ln{display:block;height:5px;border-radius:3px;background:rgba(244,244,246,.55)}
+  .thumb .ln.sm{height:4px;background:rgba(244,244,246,.3)}
+  .thumb.th{display:flex;flex-direction:column;gap:5px;justify-content:center;padding:0 8px}
+  .thumb.tp{display:grid;place-items:center}
+  .thumb.tp svg{width:30px;height:30px}
+  .thumb.tw .b7{display:flex;gap:2px;align-items:flex-end;height:100%;padding:6px 6px;box-sizing:border-box}
+  .thumb.tw .b7 i{flex:1;background:rgba(231,222,208,.55);border-radius:2px 2px 0 0}
+  .thumb.td{display:flex;align-items:center;padding:0 8px}
+  .thumb.td .r{display:flex;flex-direction:column;gap:4px;width:100%}
+  .thumb.td .r i{height:5px;border-radius:3px;background:rgba(244,244,246,.42)}
+  .octrl{display:flex;gap:8px}
+  .oarrow{
+    width:34px;height:34px;border-radius:10px;border:1px solid var(--line);
+    background:rgba(255,255,255,.03);color:var(--txt);font-size:16px;cursor:pointer;
+    display:grid;place-items:center;transition:all .18s var(--spring);
+  }
+  .oarrow:hover:not(:disabled){background:rgba(255,255,255,.09);border-color:var(--line-2)}
+  .oarrow:disabled{opacity:.22;cursor:default}
+  .oarrow:active:not(:disabled){transform:scale(.9)}
+  .set-entry{
+    display:block;margin:28px auto 0;background:transparent;border:1px solid var(--line);
+    color:var(--dim);font-size:12.5px;font-family:inherit;padding:9px 18px;border-radius:11px;
+    cursor:pointer;transition:all .2s var(--spring);
+  }
+  .set-entry:hover{color:var(--txt);background:rgba(255,255,255,.05);border-color:var(--line-2)}
+  .set-entry:active{transform:scale(.97)}
 </style>
 </head>
 <body>
@@ -313,13 +363,16 @@
 <div class="hairline"></div>
 
 <main class="wrap">
-  <header class="head">
+  <button class="cog" id="cogBtn" aria-label="Section order" title="Section order">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+  </button>
+  <header class="head" data-block="header">
     <div class="eyebrow"><span>Daily Ritual</span><a class="lang" href="../">中文</a></div>
     <h1 class="greet" id="greet">Good morning <em>·</em> <span>Day 1</span></h1>
     <div class="date" id="date"></div>
   </header>
 
-  <section class="panel hero">
+  <section class="panel hero" data-block="progress">
     <div class="ring">
       <svg width="92" height="92" viewBox="0 0 92 92">
         <defs>
@@ -339,19 +392,21 @@
     </div>
   </section>
 
-  <section class="panel week">
+  <section class="panel week" data-block="week">
     <div class="week-head"><span>Last 7 days</span><b id="weekRate"></b></div>
     <div class="bars" id="weekBars"></div>
   </section>
 
+  <div data-block="today">
   <div class="sec">Today <b id="count">0 / 0</b></div>
   <div class="list" id="list"></div>
   <button class="add" id="addBtn">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
     New habit
   </button>
+  </div>
 
-  <div class="foot">Consistency beats perfection</div>
+  <button class="set-entry" id="setEntryBtn">⚙ Arrange sections</button>
 </main>
 
 <div class="mask" id="mask">
@@ -376,6 +431,19 @@
     </div>
     <div class="row" id="delRow" style="display:none">
       <button class="btn danger" id="delBtn">Delete this habit</button>
+    </div>
+  </div>
+</div>
+
+<div class="mask" id="setMask">
+  <div class="sheet">
+    <div class="handle"></div>
+    <h3>Section order</h3>
+    <p class="set-tip">Tap the arrows to move each section up or down. Changes apply instantly. Tap “Reset” to restore the default.</p>
+    <div class="order" id="orderList"></div>
+    <div class="row">
+      <button class="btn ghost" id="setReset">Reset</button>
+      <button class="btn" id="setDone">Done</button>
     </div>
   </div>
 </div>
@@ -637,8 +705,96 @@
     save(); closeSheet(); render(); toast("Deleted");
   };
 
+  /* ---------- section order settings ---------- */
+  var BLOCKS = [
+    {key:"header", name:"Header"},
+    {key:"progress", name:"Progress ring"},
+    {key:"week", name:"Last 7 days"},
+    {key:"today", name:"Today"}
+  ];
+  var ORDER_KEY = "habit-tracker-order";
+  function getOrder(){
+    var raw = null;
+    try{ raw = localStorage.getItem(ORDER_KEY); }catch(e){}
+    if(raw){
+      try{
+        var arr = JSON.parse(raw);
+        if(Array.isArray(arr)){
+          var valid = arr.filter(function(k){ return BLOCKS.some(function(b){ return b.key===k; }); });
+          BLOCKS.forEach(function(b){ if(valid.indexOf(b.key) === -1) valid.push(b.key); });
+          return valid;
+        }
+      }catch(e){}
+    }
+    return BLOCKS.map(function(b){ return b.key; });
+  }
+  function saveOrder(order){ try{ localStorage.setItem(ORDER_KEY, JSON.stringify(order)); }catch(e){} }
+  function applyOrder(order){
+    var wrap = document.querySelector(".wrap");
+    order.forEach(function(k){
+      var el = document.querySelector('[data-block="'+k+'"]');
+      if(el && el.parentNode === wrap) wrap.appendChild(el);
+    });
+    // 重排后把底部「设置板块顺序」按钮放回最末尾，避免被内容板块挤到顶部
+    var entry = document.getElementById("setEntryBtn");
+    if(entry && entry.parentNode === wrap) wrap.appendChild(entry);
+  }
+  function thumbHTML(key){
+    switch(key){
+      case "header":
+        return '<div class="thumb th"><i class="ln"></i><i class="ln sm"></i></div>';
+      case "progress":
+        return '<div class="thumb tp"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="5"/><circle cx="20" cy="20" r="14" fill="none" stroke="#e7ded0" stroke-width="5" stroke-linecap="round" stroke-dasharray="88" stroke-dashoffset="26" transform="rotate(-90 20 20)"/></svg></div>';
+      case "week":
+        return '<div class="thumb tw"><div class="b7"><i style="height:42%"></i><i style="height:74%"></i><i style="height:56%"></i><i style="height:92%"></i><i style="height:60%"></i><i style="height:80%"></i><i style="height:48%"></i></div></div>';
+      case "today":
+        return '<div class="thumb td"><div class="r"><i style="width:80%"></i><i style="width:62%"></i><i style="width:72%"></i></div></div>';
+      default:
+        return '<div class="thumb"></div>';
+    }
+  }
+  function paintOrder(){
+    var order = getOrder(), box = $("orderList");
+    box.innerHTML = "";
+    order.forEach(function(k, idx){
+      var b = null;
+      for(var i=0;i<BLOCKS.length;i++){ if(BLOCKS[i].key===k){ b=BLOCKS[i]; break; } }
+      var row = document.createElement("div");
+      row.className = "oblock";
+      row.innerHTML =
+        thumbHTML(b.key) +
+        '<span class="oname">'+b.name+'</span>' +
+        '<span class="octrl">' +
+          '<button class="oarrow up"'+(idx===0?' disabled':'')+'>↑</button>' +
+          '<button class="oarrow down"'+(idx===order.length-1?' disabled':'')+'>↓</button>' +
+        '</span>';
+      row.querySelector(".up").onclick = function(){
+        if(idx===0) return;
+        var o = getOrder(), t = o[idx-1]; o[idx-1]=o[idx]; o[idx]=t;
+        saveOrder(o); applyOrder(o); paintOrder();
+      };
+      row.querySelector(".down").onclick = function(){
+        if(idx===order.length-1) return;
+        var o = getOrder(), t = o[idx+1]; o[idx+1]=o[idx]; o[idx]=t;
+        saveOrder(o); applyOrder(o); paintOrder();
+      };
+      box.appendChild(row);
+    });
+  }
+  function openSet(){ paintOrder(); $("setMask").classList.add("show"); }
+  function closeSet(){ $("setMask").classList.remove("show"); }
+  $("cogBtn").onclick = openSet;
+  $("setEntryBtn").onclick = openSet;
+  $("setDone").onclick = closeSet;
+  $("setMask").onclick = function(e){ if(e.target === $("setMask")) closeSet(); };
+  $("setReset").onclick = function(){
+    var o = BLOCKS.map(function(b){ return b.key; });
+    saveOrder(o); applyOrder(o); paintOrder(); toast("Default order restored");
+  };
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape") closeSet(); });
+
   /* ---------- boot ---------- */
-  load(); render(); buildPickers();
+  load(); applyOrder(getOrder()); render(); buildPickers();
   var cur = today();
   setInterval(function(){ var t = today(); if(t !== cur){ cur = t; render(); } }, 20000);
   if(warn) toast("Local storage is disabled — nothing will be saved");
