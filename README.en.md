@@ -17,6 +17,8 @@ A language switch sits in the top-right corner of the page. Both versions share 
 - **Progress ring** — the ring up top shows today's completion ratio
 - **Streaks** — automatic count of consecutive days per habit; 7+ days gets a "looking good" badge
 - **Last 7 days** — a bar chart of the past week, plus completion rate and perfect-day count
+- **Monthly heatmap** — see each day's completion at a glance, flip between months, and tap a date to see which habits were done
+- **Section order** — rearrange the sections with the gear icon in the top-right; changes apply instantly
 - **All done** — a brief confetti burst when everything is checked off
 - **Customizable** — name, icon and color are all editable; habits can be deleted
 - **Rollover** — leave the page open past midnight and it refreshes into the new day automatically
@@ -96,7 +98,6 @@ Deliberately restrained: near-black canvas, hairline borders, a single champagne
 ## Roadmap
 
 - Export / import data (so a cleared cache is not fatal)
-- Monthly heatmap view
 - Reorder and archive habits
 - Reminder notifications
 
